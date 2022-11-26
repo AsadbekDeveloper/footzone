@@ -8,6 +8,8 @@ import 'text_field.dart';
 
 class RegisterPage extends StatefulWidget {
   static const id = 'register';
+
+  const RegisterPage({super.key});
   @override
   _RegisterPageState createState() => _RegisterPageState();
 }
@@ -54,7 +56,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             const Text(
                               textAlign: TextAlign.center,
                               "Ro'yxatdan o'tish",
-                              style: headText,
+                              style: cardHeaderText,
                             ),
                             const Text(
                               textAlign: TextAlign.center,

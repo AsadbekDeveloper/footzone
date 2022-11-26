@@ -26,7 +26,7 @@ class Fields extends ChangeNotifier {
       final response = await http.get(url);
       if (response.statusCode == 200) {
         final fieldJson = Map.from(jsonDecode(response.body));
-        if (_fields.length == 0) {
+        if (_fields.isEmpty) {
           fieldJson.forEach((key, value) {
             addToProvider(key, value);
           });

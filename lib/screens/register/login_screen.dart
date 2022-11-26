@@ -8,6 +8,8 @@ import 'text_field.dart';
 
 class LoginPage extends StatefulWidget {
   static const id = 'login';
+
+  const LoginPage({super.key});
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -51,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
                             const Text(
                               textAlign: TextAlign.center,
                               "Xush kelibsiz!",
-                              style: headText,
+                              style: cardHeaderText,
                             ),
                             const SizedBox(
                               height: 10,

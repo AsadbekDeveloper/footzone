@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-// import 'package:football_booking_app/constants.dart';
-// import '../../providers/fields.dart';
+import 'package:footzone/constants/colors.dart';
+import 'package:footzone/constants/text_styles.dart';
 import 'package:provider/provider.dart';
 
-import '../../constants/colors.dart';
+import '../../providers/fields.dart';
 
 class FieldCard extends StatelessWidget {
   final int index;
@@ -11,7 +11,7 @@ class FieldCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // var field = Provider.of<Fields>(context, listen: false).indexField(index);
+    var field = Provider.of<Fields>(context, listen: false).indexField(index);
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5),
       child: Card(
@@ -25,6 +25,7 @@ class FieldCard extends StatelessWidget {
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     children: [
@@ -39,45 +40,74 @@ class FieldCard extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          // Text(field.name),
+                          Text(
+                            field.name,
+                            style: cardHeaderText,
+                          ),
                           const SizedBox(
                             height: 10,
                           ),
-                          const Text('Hi'
-                              // field.info,
-                              ),
+                          Text(
+                            field.town,
+                            style: cardDescText,
+                          ),
                           const SizedBox(
                             height: 10,
                           ),
                           Row(
-                            children: const [
-                              Icon(Icons.star),
-                              Text('4,5'),
+                            children: [
+                              Icon(Icons.timer_outlined),
+                              Text(
+                                field.price.toString(),
+                                style: cardHeaderText,
+                              ),
+                              Text(
+                                '/soatiga',
+                                style: cardDescText,
+                              ),
                             ],
                           )
                         ],
                       ),
                     ],
                   ),
-                  Column(
-                    children: const [
-                      Text('Uzoq'),
-                    ],
-                  )
+                  Container(
+                    padding: EdgeInsets.symmetric(
+                      vertical: 8,
+                      horizontal: 12,
+                    ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: mainYellow,
+                    ),
+                    child: Text('Uzoq'),
+                  ),
                 ],
               ),
-              const Divider(),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: const Divider(
+                  color: mainBlue,
+                  height: 1,
+                ),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  Text('5% chegirmaga ega bo\'ling'),
-                  // Text('${field.capacity} ta o\'rin qoldi'),
+                children: [
+                  Text(
+                    field.owner,
+                    style: cardDescText,
+                  ),
+                  Text(
+                    '${field.capacity} ta o\'rin qoldi',
+                    style: cardDescGreen,
+                  ),
                 ],
               ),
             ],

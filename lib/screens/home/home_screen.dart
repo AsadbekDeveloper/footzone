@@ -30,10 +30,10 @@ class HomePage extends StatelessWidget {
         ],
       ),
       body: Column(children: [
-        FilterCard(),
+        const FilterCard(),
         Expanded(
           child: Padding(
-            padding: EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(20.0),
             child: ListView.builder(
               clipBehavior: Clip.antiAlias,
               itemCount: fields.length,

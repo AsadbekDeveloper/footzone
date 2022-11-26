@@ -5,4 +5,4 @@ const mainYellow = Color(0xFFFFC400);
 const textBlue = Color(0xFF101434);
 const mainGrey = Color.fromARGB(255, 133, 137, 160);
 const mainRed = Color(0xFFDE0B19);
-const mainGreen = Color.fromARGB(255, 120, 255, 83);
+const mainGreen = Color.fromARGB(255, 78, 183, 50);

@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:footzone/constants/colors.dart';
 
-const headText = TextStyle(
-  color: Colors.white,
-  fontSize: 34,
+const cardHeaderText = TextStyle(
+  color: textBlue,
+  fontSize: 18,
   fontWeight: FontWeight.bold,
+);
+const cardDescText = TextStyle(
+  color: textBlue,
+  fontSize: 16,
+  fontWeight: FontWeight.normal,
+);
+const cardDescGreen = TextStyle(
+  color: mainGreen,
+  fontSize: 16,
+  fontWeight: FontWeight.normal,
 );
 
 const bodyText = TextStyle(

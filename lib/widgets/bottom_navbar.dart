@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:footzone/screens/map/map_screen.dart';
 
 import '../constants/colors.dart';
 import '../screens/register/login_screen.dart';
@@ -23,7 +24,7 @@ class BottomNavBar extends StatelessWidget {
               }
             case 1:
               {
-                // Navigator.pushNamed(context, MapScreen.id);
+                Navigator.pushNamed(context, MapPage.id);
                 break;
               }
             case 2:

@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:footzone/providers/fields.dart';
-import 'package:footzone/screens/map/map_screen.dart';
+import 'package:footzone/providers/markers.dart';
 import 'package:footzone/screens/map/map_screen.dart';
 import 'package:provider/provider.dart';
 import 'screens/home/home_screen.dart';
@@ -18,8 +18,11 @@ void main() async {
         ChangeNotifierProvider<Fields>(
           create: ((context) => Fields()),
         ),
+        ChangeNotifierProvider<Markers>(
+          create: ((context) => Markers()),
+        ),
       ],
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
