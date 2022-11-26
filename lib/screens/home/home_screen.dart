@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:footzone/providers/current_location.dart';
+import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 import '../../constants/colors.dart';
 import '../../providers/fields.dart';
@@ -11,8 +13,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var fields = Provider.of<Fields>(context).getFields;
-
+    final fields = Provider.of<Fields>(context).getFields;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,

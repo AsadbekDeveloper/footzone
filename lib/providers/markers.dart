@@ -5,10 +5,8 @@ import 'package:location/location.dart';
 
 class Markers extends ChangeNotifier {
   List<Marker> _fieldsMarkers = [];
-
   List<Marker> get getFieldMarkers => _fieldsMarkers;
-
-  void addMarker(String id, Locate location) {
+  void addMarker(String id, Locate location, BitmapDescriptor icon) {
     _fieldsMarkers.add(
       Marker(
         markerId: MarkerId(id),
@@ -17,7 +15,7 @@ class Markers extends ChangeNotifier {
           title: 'My Location',
           anchor: Offset(0.5, 0.0),
         ),
-        icon: BitmapDescriptor.defaultMarker,
+        icon: icon,
       ),
     );
     notifyListeners();

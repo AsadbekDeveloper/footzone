@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:footzone/providers/current_location.dart';
 import 'package:footzone/providers/fields.dart';
 import 'package:footzone/providers/markers.dart';
 import 'package:footzone/screens/map/map_screen.dart';
@@ -20,6 +21,9 @@ void main() async {
         ),
         ChangeNotifierProvider<Markers>(
           create: ((context) => Markers()),
+        ),
+        ChangeNotifierProvider<CurrentLocation>(
+          create: ((context) => CurrentLocation()),
         ),
       ],
       child: const MyApp(),
@@ -42,6 +46,7 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       Provider.of<Fields>(context, listen: false).initialFire();
+      Provider.of<CurrentLocation>(context, listen: false).getCurrentLocaton();
     });
   }
 

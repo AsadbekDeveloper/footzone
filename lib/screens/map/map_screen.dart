@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:footzone/providers/current_location.dart';
 import 'package:footzone/providers/field_model.dart';
 import 'package:footzone/providers/fields.dart';
 import 'package:footzone/providers/markers.dart';
-import 'package:footzone/utilities/map/getto_location.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:provider/provider.dart';
@@ -37,15 +37,24 @@ class _MapPageState extends State<MapPage> {
       final markers = Provider.of<Markers>(context, listen: false);
       final List<FieldModel> fields = fieldsData.getFields;
       for (FieldModel element in fields) {
-        markers.addMarker(element.id, element.location);
+        markers.addMarker(
+            element.id, element.location, BitmapDescriptor.defaultMarker);
       }
+      final currentLocation =
+          Provider.of<CurrentLocation>(context, listen: false).currentLocation;
+      markers.addMarker(
+        'myLocation',
+        Locate(currentLocation.latitude, currentLocation.longitude),
+        BitmapDescriptor.defaultMarkerWithHue(200),
+      );
     });
   }
 
   @override
   Widget build(BuildContext context) {
     final markers = Provider.of<Markers>(context);
-    print(markers.getFieldMarkers);
+    final currentLocation =
+        Provider.of<CurrentLocation>(context).currentLocation;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Xaritadan izlash'),
@@ -75,8 +84,20 @@ class _MapPageState extends State<MapPage> {
               bottom: 30,
               left: 20,
               child: ElevatedButton(
-                onPressed: () {
-                  getToMyLocaction(_location, _controller, markers);
+                onPressed: () async {
+                  final GoogleMapController controller =
+                      await _controller.future;
+
+                  controller.animateCamera(
+                    CameraUpdate.newCameraPosition(
+                      CameraPosition(
+                        bearing: 0,
+                        target: LatLng(currentLocation.latitude!,
+                            currentLocation.longitude!),
+                        zoom: 13.0,
+                      ),
+                    ),
+                  );
                 },
                 style: ButtonStyle(
                   shape: MaterialStateProperty.all(

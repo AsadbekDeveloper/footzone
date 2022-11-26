@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:footzone/constants/colors.dart';
 import 'package:footzone/constants/text_styles.dart';
+import 'package:footzone/utilities/calculate_distance.dart';
+import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 
+import '../../providers/current_location.dart';
 import '../../providers/fields.dart';
 
 class FieldCard extends StatelessWidget {
@@ -12,6 +15,14 @@ class FieldCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var field = Provider.of<Fields>(context, listen: false).indexField(index);
+    final LocationData currentLocation =
+        Provider.of<CurrentLocation>(context).currentLocation;
+    final distance = calculateDistance(
+      field.location.latitude,
+      field.location.longitude,
+      currentLocation.latitude,
+      currentLocation.longitude,
+    );
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5),
       child: Card(
@@ -86,7 +97,7 @@ class FieldCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(30),
                       color: mainYellow,
                     ),
-                    child: Text('Uzoq'),
+                    child: Text('${distance.toStringAsFixed(2)} km'),
                   ),
                 ],
               ),
