@@ -7,7 +7,7 @@ const cardHeaderText = TextStyle(
   fontWeight: FontWeight.bold,
 );
 const cardDescText = TextStyle(
-  color: textBlue,
+  color: descBlue,
   fontSize: 16,
   fontWeight: FontWeight.normal,
 );
@@ -29,6 +29,7 @@ const buttonText = TextStyle(
 );
 
 const bodyTextSmall = TextStyle(
-    fontSize: 20,
-    fontWeight: FontWeight.w500,
-    color: Color.fromARGB(255, 207, 198, 198));
+  fontSize: 20,
+  fontWeight: FontWeight.w500,
+  color: Color.fromARGB(255, 207, 198, 198),
+);

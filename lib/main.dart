@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:footzone/providers/current_location.dart';
 import 'package:footzone/providers/fields.dart';
 import 'package:footzone/providers/markers.dart';
+import 'package:footzone/screens/field/field_screen.dart';
 import 'package:footzone/screens/map/map_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'screens/home/home_screen.dart';
 import 'screens/register/login_screen.dart';
@@ -54,14 +56,24 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        fontFamily: GoogleFonts.openSans().fontFamily,
+      ),
       title: 'FootZone',
-              routes: {
-          '/': ((context) => const HomePage()),
-          MapPage.id: (context) => MapPage(),
-          LoginPage.id: (context) => LoginPage(),
-          RegisterPage.id: (context) => RegisterPage(),
-        },
-
+      home: FieldPage(
+        index: 0,
+        distance: 3.5,
+      ),
+      routes: {
+        // '/': ((context) => const HomePage()),
+        MapPage.id: (context) => MapPage(),
+        LoginPage.id: (context) => LoginPage(),
+        RegisterPage.id: (context) => RegisterPage(),
+        FieldPage.id: (context) => FieldPage(
+              index: 0,
+              distance: 3.5,
+            ),
+      },
     );
   }
 }
