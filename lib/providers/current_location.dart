@@ -10,7 +10,6 @@ class CurrentLocation extends ChangeNotifier {
     final location = Location();
     locationPermission(location);
     currentLocation = await location.getLocation();
-    print(currentLocation);
     notifyListeners();
   }
 }

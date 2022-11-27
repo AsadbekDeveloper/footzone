@@ -6,13 +6,13 @@ import 'package:location/location.dart';
 class Markers extends ChangeNotifier {
   List<Marker> _fieldsMarkers = [];
   List<Marker> get getFieldMarkers => _fieldsMarkers;
-  void addMarker(String id, Locate location, BitmapDescriptor icon) {
+  void addMarker(String id, Locate location, BitmapDescriptor icon, String title) {
     _fieldsMarkers.add(
       Marker(
         markerId: MarkerId(id),
         position: LatLng(location.latitude!, location.longitude!),
-        infoWindow: const InfoWindow(
-          title: 'My Location',
+        infoWindow:  InfoWindow(
+          title: title,
           anchor: Offset(0.5, 0.0),
         ),
         icon: icon,

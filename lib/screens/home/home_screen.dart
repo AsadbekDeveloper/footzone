@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:footzone/providers/current_location.dart';
-import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 import '../../constants/colors.dart';
 import '../../providers/fields.dart';

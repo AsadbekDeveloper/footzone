@@ -60,12 +60,8 @@ class _MyAppState extends State<MyApp> {
         fontFamily: GoogleFonts.openSans().fontFamily,
       ),
       title: 'FootZone',
-      home: FieldPage(
-        index: 0,
-        distance: 3.5,
-      ),
       routes: {
-        // '/': ((context) => const HomePage()),
+        '/': ((context) => const HomePage()),
         MapPage.id: (context) => MapPage(),
         LoginPage.id: (context) => LoginPage(),
         RegisterPage.id: (context) => RegisterPage(),

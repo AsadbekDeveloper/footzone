@@ -1,6 +1,7 @@
 import 'dart:convert';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter/services.dart';
 
 import 'field_model.dart';
 
@@ -23,14 +24,16 @@ class Fields extends ChangeNotifier {
     final url = Uri.https(
         'football-booking-c8d9c-default-rtdb.firebaseio.com', '/fields.json');
     try {
-      final response = await http.get(url);
-      if (response.statusCode == 200) {
-        final fieldJson = Map.from(jsonDecode(response.body));
-        if (_fields.isEmpty) {
-          fieldJson.forEach((key, value) {
-            addToProvider(key, value);
-          });
-        }
+      // final response = await http.get(url);
+      final response = await rootBundle.loadString('assets/field.json');
+      // if (response.statusCode == 200) {
+      // final fieldJson = Map.from(jsonDecode(response.body));
+      final fieldJson = Map.from(jsonDecode(response));
+      if (_fields.isEmpty) {
+        fieldJson.forEach((key, value) {
+          addToProvider(key, value);
+        });
+        // }
       }
       notifyListeners();
     } catch (e) {

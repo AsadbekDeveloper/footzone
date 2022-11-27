@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:footzone/providers/fields.dart';
+import 'package:provider/provider.dart';
 
 import 'field_bottom.dart';
 import 'field_top.dart';
@@ -11,6 +13,7 @@ class FieldPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final fields = Provider.of<Fields>(context);
     return Scaffold(
       body: Column(
         children: [

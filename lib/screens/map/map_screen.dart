@@ -37,8 +37,8 @@ class _MapPageState extends State<MapPage> {
       final markers = Provider.of<Markers>(context, listen: false);
       final List<FieldModel> fields = fieldsData.getFields;
       for (FieldModel element in fields) {
-        markers.addMarker(
-            element.id, element.location, BitmapDescriptor.defaultMarker);
+        markers.addMarker(element.id, element.location,
+            BitmapDescriptor.defaultMarker, element.name);
       }
       final currentLocation =
           Provider.of<CurrentLocation>(context, listen: false).currentLocation;
@@ -46,6 +46,7 @@ class _MapPageState extends State<MapPage> {
         'myLocation',
         Locate(currentLocation.latitude, currentLocation.longitude),
         BitmapDescriptor.defaultMarkerWithHue(200),
+        'Sizning joylashuvingiz',
       );
     });
   }
